@@ -19,7 +19,6 @@ RUN Rscript -e 'options(warn=2); BiocManager::install(c( \
         "affyio", \
         "biomaRt", \
         "car", \
-        "data.table", \
         "dplyr", \
         "gdata", \
         "ggplot2", \
@@ -36,7 +35,9 @@ RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 RUN wget 'https://filesforpublic.blob.core.windows.net/toxicogx/hgu133plus2hsensgcdf_24.0.0.tar.gz'
 RUN wget 'https://filesforpublic.blob.core.windows.net/toxicogx/rat2302rnensgcdf_24.0.0.tar.gz'
 RUN wget 'https://bioc.ism.ac.jp/packages/3.11/bioc/src/contrib/Archive/PharmacoGx/PharmacoGx_2.0.1.tar.gz'
+RUN wget 'https://cran.r-project.org/src/contrib/Archive/data.table/data.table_1.12.8.tar.gz'
 
 RUN Rscript -e "library(devtools); install.packages('hgu133plus2hsensgcdf_24.0.0.tar.gz', repos = NULL, type = 'source')"
 RUN Rscript -e "library(devtools); install.packages('rat2302rnensgcdf_24.0.0.tar.gz', repos = NULL, type = 'source')"
 RUN Rscript -e "library(devtools); install.packages('PharmacoGx_2.0.1.tar.gz', repos = NULL, type = 'source')"
+RUN Rscript -e "library(devtools); install.packages('data.table_1.12.8.tar.gz', repos = NULL, type = 'source')"
