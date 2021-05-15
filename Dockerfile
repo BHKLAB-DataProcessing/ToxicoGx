@@ -9,8 +9,8 @@ RUN Rscript -e 'remotes::install_github( \
         "bhklab/ToxicoGx", \
         ref = "5cc8641e454ef33c93aabf5ab4ad226f9a9280f3")'
 
-RUN Rscript -e 'options(warn=2); install.packages("BiocManager")'
-RUN Rscript -e 'options(warn=2); BiocManager::install(c( \
+RUN Rscript -e 'install.packages("BiocManager")'
+RUN Rscript -e 'BiocManager::install(c( \
         "SummarizedExperiment", \
         "abind", \
         "affy", \
