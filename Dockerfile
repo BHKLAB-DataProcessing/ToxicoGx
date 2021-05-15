@@ -11,8 +11,6 @@ RUN Rscript -e 'remotes::install_github( \
 
 RUN Rscript -e 'options(warn=2); install.packages("BiocManager")'
 RUN Rscript -e 'options(warn=2); BiocManager::install(c( \
-        "Biobase", \
-        "BiocManager", \
         "SummarizedExperiment", \
         "abind", \
         "affy", \
