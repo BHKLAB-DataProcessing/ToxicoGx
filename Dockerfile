@@ -28,7 +28,7 @@ RUN Rscript -e 'options(warn=2); BiocManager::install(c( \
     ))'
 
 RUN Rscript -e "install.packages('devtools')"
-
+RUN Rscript -e "install.packages('biocompute')"
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 51716619E084DAB9
 RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 
