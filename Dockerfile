@@ -1,6 +1,8 @@
-FROM registry.codeocean.com/codeocean/r-base:4.0.0-ubuntu18.04
+FROM bioconductor/bioconductor_docker:devel
 
-ARG DEBIAN_FRONTEND=noninteractive
+USER root
+
+RUN apt-get update && apt-get install -y openssl libssl-dev curl libcurl4-openssl-dev libxml2-dev git tcl tk
 
 RUN Rscript -e 'remotes::install_github( \
         "bhklab/CoreGx", \
@@ -26,12 +28,7 @@ RUN Rscript -e 'BiocManager::install(c( \
     ))'
 
 RUN Rscript -e "install.packages('devtools')"
-RUN Rscript -e "install.packages('V8')"
-RUN Rscript -e "install.packages('uuid')"
-RUN Rscript -e "install.packages('jsonvalidate')"
 RUN Rscript -e "install.packages('biocompute')"
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 51716619E084DAB9
-RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 
 RUN wget 'https://filesforpublic.blob.core.windows.net/toxicogx/hgu133plus2hsensgcdf_24.0.0.tar.gz'
 RUN wget 'https://filesforpublic.blob.core.windows.net/toxicogx/rat2302rnensgcdf_24.0.0.tar.gz'
